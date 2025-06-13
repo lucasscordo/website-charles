@@ -77,11 +77,37 @@
       color: #bbb;
       margin: 5px 0 10px 35px;
     }
+    .ww3-progress {
+      width: 100%;
+      height: 30px;
+      background-color: #333;
+      margin: 20px 0;
+      position: relative;
+    }
+    .ww3-progress-bar {
+      width: 75%;
+      height: 100%;
+      background-color: #ff0000;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: width 2s ease;
+    }
+    .ww3-progress-text {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      line-height: 30px;
+      z-index: 1;
+    }
     .container {
       display: flex;
       max-width: 1200px;
       margin: 0 auto;
       padding: 40px 20px;
+      margin-top: 40px;
     }
     .main-content {
       flex: 2;
@@ -147,38 +173,36 @@
   <header>
     <img class="logo-image" src="APLogo.png" alt="AP Logo" />
     <nav>
-      <a href="#">WORLD</a>
-      <a href="#">U.S.</a>
-      <a href="#">POLITICS</a>
-      <a href="#">SPORTS</a>
-      <a href="#">ENTERTAINMENT</a>
+      <a href="https://apnews.com/world-news">WORLD</a>
+      <a href="https://apnews.com/us-news">U.S.</a>
+      <a href="https://apnews.com/politics">POLITICS</a>
+      <a href="https://apnews.com/sports">SPORTS</a>
+      <a href="https://apnews.com/entertainment">ENTERTAINMENT</a>
       <a href="#">MORE</a>
     </nav>
     <a href="#" class="donate-button">DONATE</a>
   </header>
   <section class="top-section">
-    <div class="date">May 22, 2025</div>
-    <h1>Royal: The Dog Who Dethroned the Viral King Charles</h1>
+    <div class="date">June 13, 2025</div>
+    <h1>Israel Prime Minister may be dead</h1>
   </section>
+  <div class="ww3-progress">
+    <div class="ww3-progress-bar"></div>
+    <div class="ww3-progress-text">WW3 Odds: <span id="odds-value">75</span>%</div>
+  </div>
   <div class="container">
     <section class="main-content">
-      <img src="king.jpeg" alt="King Charles the dog" />
+      <img src="king.jpeg" alt="Breaking News" />
       <div class="article-body">
-        <p><strong>Royal: The New Alpha at the Chinese Shelter</strong></p>
+        <p><strong>Unconfirmed Reports: Israeli PM Struck by Missiles, Global Tensions Soar</strong></p>
         <p>
-          For years, Charles reigned supreme over the dog pack at a rescue shelter on the outskirts of Beijing. Nicknamed “King Charles” by shelter workers and volunteers, he was calm, majestic, and commanded respect without needing to growl. His story of survival and leadership had even gone viral, making him an internet favorite.
+          June 13, 2025 – Unofficial sources close to the Iranian government, speaking on condition of anonymity due to the extreme sensitivity of the claims, are indicating that Israeli Prime Minister Benjamin Netanyahu was impacted by missiles launched earlier today. These unverified reports have sent shockwaves through international diplomatic circles, immediately raising fears of a dramatic escalation in the already volatile Middle East.
         </p>
         <p>
-          But as time passed, a new contender began to rise. Royal, a younger, stronger, and more aggressive dog, began testing boundaries. Shelter staff noticed his subtle challenges to Charles’s authority — from blocking his path at feeding time to staring contests that lingered longer than usual.
+          The unconfirmed nature of these claims has done little to quell growing anxieties, with many analysts warning that if proven true, such an event could rapidly spiral into a global conflict. The specter of a Third World War is now being openly discussed in various capitals, as the implications of an attack on a head of state in this highly charged geopolitical climate are profound and potentially catastrophic. The world watches with bated breath, awaiting further details and official confirmations.
         </p>
         <p>
-          Eventually, tensions reached a boiling point. In a fierce but brief confrontation in the central yard, Royal launched a decisive attack. Charles sustained a leg injury and was forced to retreat, marking the end of an era. Witnesses described the scene as intense, emotional, and almost ritualistic in its finality.
-        </p>
-        <p>
-          The pack shifted immediately. With Charles sidelined, the other dogs began following Royal's lead. Despite his aggressive takeover, Royal has shown signs of growing into his leadership role — standing guard during feedings, calming younger dogs, and asserting order.
-        </p>
-        <p>
-          Charles, now under veterinary care, is recovering and remains beloved by all. His legacy as a peaceful and wise leader continues to inspire volunteers and followers of the shelter. Meanwhile, Royal steps into the spotlight — not just as the new alpha, but as a symbol of change and survival in the world of pack hierarchy.
+          In response to the escalating rumors, the United States is reportedly already preparing retaliatory measures, signaling a swift and forceful reaction should the unconfirmed reports be substantiated. Meanwhile, Russia is said to be closely monitoring the situation, its posture indicating a cautious but deeply concerned stance as the international community braces for potential ramifications that could redefine global alliances and ignite widespread conflict.
         </p>
       </div>
     </section>
@@ -196,5 +220,45 @@
       </ol>
     </aside>
   </div>
+  <script>
+    function updateProgressBar() {
+      const progressBar = document.querySelector('.ww3-progress-bar');
+      const oddsValue = document.getElementById('odds-value');
+      let currentValue = 75;
+      let targetValue = 75;
+      let increasing = true;
+
+      function animate() {
+        if (increasing) {
+          currentValue += 0.2;
+          if (currentValue >= 83) {
+            increasing = false;
+          }
+        } else {
+          currentValue -= 0.2;
+          if (currentValue <= 72) {
+            increasing = true;
+          }
+        }
+
+        progressBar.style.width = currentValue + '%';
+        oddsValue.textContent = Math.round(currentValue);
+
+        // Cambiar el color basado en el valor
+        if (currentValue > 78) {
+          progressBar.style.backgroundColor = '#ff3333'; // Rojo medio
+        } else {
+          progressBar.style.backgroundColor = '#ff6666'; // Rojo claro
+        }
+
+        setTimeout(animate, 100);
+      }
+
+      animate();
+    }
+
+    // Iniciar la animación cuando la página cargue
+    window.addEventListener('load', updateProgressBar);
+  </script>
 </body>
 </html>
